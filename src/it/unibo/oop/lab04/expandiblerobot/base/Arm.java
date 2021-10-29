@@ -24,34 +24,40 @@ public class Arm extends AbstractOperableComponent {
 		return this.grabbing;
 	}
 	
-	private double pick() {
+	private boolean pick() {
 		if (!this.isGrabbing()) {
 			this.grabbing = true;
-			return this.getEnergyConsumption();
+			return true;
 		}
 		else {
-			return 0;
+			return false;
 		}
 	}
 	
-	private double drop() {
+	private boolean drop() {
 		if (this.isGrabbing()) {
 			this.grabbing = false;
-			return this.getEnergyConsumption();
+			return true;
 		}
 		else {
-			return 0;
+			return false;
 		}
 	}
 	
-	protected double executeAction(Command command) {
+	public boolean executeAction(Command command) {
 		if (command.equals(new Command("pick", 1))) {
 			return this.pick();
 		}
 		if (command.equals(new Command("drop", 2))) {
 			return this.drop();
 		}
-		return 0;
+		return false;
+	}
+
+	@Override
+	public boolean executeAction() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
