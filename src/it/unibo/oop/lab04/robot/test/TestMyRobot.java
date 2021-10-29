@@ -1,6 +1,11 @@
-package it.unibo.oop.lab04.expandiblerobot.base;
+package it.unibo.oop.lab04.robot.test;
 
 import java.util.*;
+
+import it.unibo.oop.lab04.expandiblerobot.base.AtomicBattery;
+import it.unibo.oop.lab04.expandiblerobot.base.BordersNavigator;
+import it.unibo.oop.lab04.expandiblerobot.base.Component;
+import it.unibo.oop.lab04.expandiblerobot.base.ExpandibleRobot;
 
 public class TestMyRobot {
 

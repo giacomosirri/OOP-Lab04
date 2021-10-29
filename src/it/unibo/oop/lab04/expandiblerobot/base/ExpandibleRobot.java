@@ -50,24 +50,6 @@ public class ExpandibleRobot extends BaseRobot implements ExpandibleRobotInterfa
 		return this.isBatteryEnough(c.getEnergyConsumption());
 	}
 	
-	public void executeAction(final OperableComponent c, final Command command) {
-		if (this.isBatteryEnough(c) && c.getRobot() == this) {
-			finalOp(c.executeAction(command), c);
-		}
-	}
-
-	public void executeAction(final Component c) {
-		if (this.isBatteryEnough(c) && c.getRobot() == this) {
-			finalOp(c.executeAction(), c);
-		}
-	}
-	
-	private void finalOp(boolean b, Component component) {
-		if(b) {
-			this.consumeBattery(component.getEnergyConsumption());
-		}
-	}
-	
 	public void executeAction(final OperableComponent component, final Command command) {
 		if (this.isBatteryEnough(component.getEnergyConsumption()) && component.getRobot() == this) {
 			finalOp(component.executeAction(command), component);
