@@ -10,9 +10,6 @@ public class ExpandibleRobot extends BaseRobot implements ExpandibleRobotInterfa
 	public ExpandibleRobot(String robotName, Set<Component> comp) {
 		super(robotName);
 		this.components = comp;
-		for (Component c : this.components) {
-			c.setRobot(this);
-		}
 	}
 
 	public ExpandibleRobot(String robotName) {
@@ -37,9 +34,31 @@ public class ExpandibleRobot extends BaseRobot implements ExpandibleRobotInterfa
 	
 	public void putAllInMotion() {
 		for (final Component c : components) {
-			if (c.isSwitchedOn()) {
-				c.executeAction();
+			if (c.isSwitchedOn() && this == c.getRobot()) {
+				this.executeAction(c);
 			}
+		}
+	}
+
+	private void finalOp(boolean b, Component c) {
+		if (b) {
+			this.consumeBattery(c.getEnergyConsumption());
+		}
+	}
+		
+	private boolean isBatteryEnough(Component c) {
+		return this.isBatteryEnough(c.getEnergyConsumption());
+	}
+	
+	public void executeAction(final OperableComponent c, final Command command) {
+		if (this.isBatteryEnough(c) && c.getRobot() == this) {
+			finalOp(c.executeAction(command), c);
+		}
+	}
+
+	public void executeAction(final Component c) {
+		if (this.isBatteryEnough(c) && c.getRobot() == this) {
+			finalOp(c.executeAction(), c);
 		}
 	}
 	

@@ -7,11 +7,7 @@ public class BordersNavigator extends AbstractComponent {
 	private static final double ENERGY_CONSUMPTION = 1.2;
 	
 	private Position2D direction = new RobotPosition(1,0);
-	
-	public BordersNavigator(String name, ExpandibleRobot robot) {
-		super(name, robot);
-	}
-	
+
 	public BordersNavigator(String name) {
 		super(name);
 	}

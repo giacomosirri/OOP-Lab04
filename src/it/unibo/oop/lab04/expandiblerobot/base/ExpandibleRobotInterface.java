@@ -7,6 +7,8 @@ public interface ExpandibleRobotInterface {
 	String getName();
 			
 	Set<Component> getComponents();
+	
+	void executeAction(Component component);
 
 	void putAllInMotion();
 

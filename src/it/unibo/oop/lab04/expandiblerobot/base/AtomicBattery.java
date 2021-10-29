@@ -4,10 +4,6 @@ public class AtomicBattery extends AbstractComponent {
 
 	private static final double ENERGY_CONSUMPTION = 18;
 	
-	public AtomicBattery(String name, ExpandibleRobot robot) {
-		super(name, robot);
-	}
-	
 	public AtomicBattery(String name) {
 		super(name);
 	}
