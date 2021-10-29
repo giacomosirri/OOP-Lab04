@@ -1,0 +1,13 @@
+/Component.class
+/ExpandibleRobot.class
+/ModularRobot.class
+/OperableComponent.class
+/AbstractComponent.class
+/AbstractOperableComponent.class
+/Command.class
+/CommandInterface.class
+/ExpandibleRobotInterface.class
+/AtomicBattery.class
+/BordersNavigator.class
+/Arm.class
+/TestMyRobot.class
