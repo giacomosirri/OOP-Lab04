@@ -13,7 +13,11 @@ public abstract class AbstractOperableComponent extends AbstractComponent implem
 
 	public AbstractOperableComponent(String name) {
 		super(name);
-		this.commands = new HashSet<>();
+		this.commands = new HashSet<Command>();
+	}
+
+	public void setListCommand(Set<Command> commands) {
+		this.commands = commands;
 	}
 
 	public boolean addCommand(Command command) {
@@ -24,6 +28,5 @@ public abstract class AbstractOperableComponent extends AbstractComponent implem
 		return this.commands.remove(command);
 	}
 	
-	public abstract boolean executeAction(Command command);
  
 }

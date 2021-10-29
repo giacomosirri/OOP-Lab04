@@ -8,12 +8,12 @@ public class Arm extends AbstractOperableComponent {
 	
 	private boolean grabbing;
 
-	public Arm(String name, ExpandibleRobot robot, Set<Command> commands) {
-		super(name, robot, commands);
+	public Arm(String name, Set<Command> commands) {
+		super(name, commands);
 	}
 	
-	public Arm(String name, ExpandibleRobot robot) {
-		super(name, robot);
+	public Arm(String name) {
+		super(name);
 	}
 
 	public double getEnergyConsumption() {
@@ -24,17 +24,42 @@ public class Arm extends AbstractOperableComponent {
 		return this.grabbing;
 	}
 	
-	protected void differentiateAction() {
-		if (this.getSelectedCommand().getName() == "pick") {
-			if(!isGrabbing()) {
-				this.grabbing = true;
-				this.getEnergyConsumption();
-			}
-		} else if (this.getSelectedCommand().getName() == "drop") {
-			if(isGrabbing()) {
-				this.grabbing = false;
-				this.getEnergyConsumption();
-			}
+	private boolean pick() {
+		if (!this.isGrabbing()) {
+			this.grabbing = true;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	private boolean drop() {
+		if (this.isGrabbing()) {
+			this.grabbing = false;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean executeAction(Command command) {
+		if (command.equals(new Command("pick", 1))) {
+			return this.pick();
+		}
+		if (command.equals(new Command("drop", 2))) {
+			return this.drop();
+		}
+		return false;
+	}
+	
+	public boolean executeAction() {
+		if(this.isGrabbing()) {
+			return this.drop();
+		}
+		else {
+			return this.pick();
 		}
 	}
 

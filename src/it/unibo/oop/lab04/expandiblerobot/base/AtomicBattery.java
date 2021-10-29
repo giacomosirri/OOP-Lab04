@@ -8,18 +8,19 @@ public class AtomicBattery extends AbstractComponent {
 		super(name);
 	}
 
-	public void switchOn() {
-		if (this.isConnected() && this.getRobot().getBatteryLevel() < 0.5) {
-			super.switchOn();
-		}
-	}
 
 	public double getEnergyConsumption() {
 		return AtomicBattery.ENERGY_CONSUMPTION;
 	}
 
-	protected void differentiateAction() {
-		this.getRobot().changeBatteryLevel(100);
+	public boolean executeAction() {
+		if (this.getRobot().getBatteryLevel() > 0.5) {
+			this.getRobot().recharge();
+			return true;	
+		}
+		else {
+			return false;
+		}
 	}
 
 }
