@@ -43,6 +43,24 @@ public class ExpandibleRobot extends BaseRobot implements ExpandibleRobotInterfa
 		}
 	}
 	
+	private void finalOp(boolean b, Component component) {
+		if(b) {
+			this.consumeBattery(component.getEnergyConsumption());
+		}
+	}
+	
+	public void executeAction(final OperableComponent component, final Command command) {
+		if (this.isBatteryEnough(component.getEnergyConsumption()) && component.getRobot() == this) {
+			finalOp(component.executeAction(command), component);
+		}
+	}
+	
+	public void executeAction(final Component component) {
+		if(this.isBatteryEnough(component.getEnergyConsumption()) && component.getRobot() == this) {
+			finalOp(component.executeAction(), component);
+		}
+	}
+	
 	public String toString() {
 		String s = "Components: ";
 		for (Component c : components) {
