@@ -46,10 +46,10 @@ public class Arm extends AbstractOperableComponent {
 	
 	public boolean executeAction(Command command) {
 		if (command.equals(new Command("pick", 1))) {
-			this.finalOp(this.pick());
+			return this.pick();
 		}
 		if (command.equals(new Command("drop", 2))) {
-			this.finalOp(this.drop());
+			return this.drop();
 		}
 		return false;
 	}
