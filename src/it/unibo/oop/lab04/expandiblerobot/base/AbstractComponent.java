@@ -31,7 +31,6 @@ public abstract class AbstractComponent implements Component {
 	public void switchOn() {
 		if(!this.switchedOn) {
 			this.switchedOn = true;
-			this.executeAction();
 		}
 	}
 	
@@ -66,7 +65,6 @@ public abstract class AbstractComponent implements Component {
 		this.switchOff();
 	}
 	
-	public abstract boolean executeAction();
 	
 	public String toString() {
 		return "[Component name=" + this.name + ", switchedOn=" + this.switchedOn + ", robot=" 

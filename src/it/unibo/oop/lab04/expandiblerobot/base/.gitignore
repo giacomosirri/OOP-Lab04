@@ -11,3 +11,6 @@
 /BordersNavigator.class
 /Arm.class
 /TestMyRobot.class
+/NonOperableComponent.class
+/UnoperableComponent.class
+/AbstractUnoperableComponent.class

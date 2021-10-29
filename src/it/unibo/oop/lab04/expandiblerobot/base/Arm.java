@@ -46,17 +46,11 @@ public class Arm extends AbstractOperableComponent {
 	
 	public boolean executeAction(Command command) {
 		if (command.equals(new Command("pick", 1))) {
-			return this.pick();
+			this.finalOp(this.pick());
 		}
 		if (command.equals(new Command("drop", 2))) {
-			return this.drop();
+			this.finalOp(this.drop());
 		}
-		return false;
-	}
-
-	@Override
-	public boolean executeAction() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
