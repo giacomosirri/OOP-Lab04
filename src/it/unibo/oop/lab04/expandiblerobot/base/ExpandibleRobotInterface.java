@@ -8,8 +8,10 @@ public interface ExpandibleRobotInterface {
 			
 	Set<Component> getComponents();
 	
-	void executeAction(Component component);
-
 	void putAllInMotion();
+	
+	void executeAction(Component component);
+	
+	public void executeAction(final OperableComponent component, final Command command);
 
 }

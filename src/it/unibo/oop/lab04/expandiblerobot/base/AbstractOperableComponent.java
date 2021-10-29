@@ -16,10 +16,6 @@ public abstract class AbstractOperableComponent extends AbstractComponent implem
 		this.commands = new HashSet<Command>();
 	}
 
-	public void setListCommand(Set<Command> commands) {
-		this.commands = commands;
-	}
-
 	public boolean addCommand(Command command) {
 		return this.commands.add(command);
 	}

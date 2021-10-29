@@ -2,18 +2,14 @@ package it.unibo.oop.lab04.expandiblerobot.base;
 
 public abstract class AbstractComponent implements Component {
 	
-	private static final double MAXIMUM_ENERGY_LEVEL = 100.0;
-	
 	private final String name;
 	private boolean switchedOn;
 	private ExpandibleRobot robot;
-	private double energyLevel;
 	
 	public AbstractComponent(String name, ExpandibleRobot robot) {
 		this.name = name;
 		this.switchedOn = false;
 		this.robot = robot;
-		this.energyLevel = AbstractComponent.MAXIMUM_ENERGY_LEVEL;
 	}
 	
 	public AbstractComponent(String name) {
@@ -29,9 +25,8 @@ public abstract class AbstractComponent implements Component {
 	}
 	
 	public void switchOn() {
-		if(!this.switchedOn) {
+		if(!this.isSwitchedOn() && this.isConnected()) { // si accende solo se è connesso a qualche robot
 			this.switchedOn = true;
-			this.executeAction();
 		}
 	}
 	
@@ -48,16 +43,12 @@ public abstract class AbstractComponent implements Component {
 	}
 	
 	public void setRobot(ExpandibleRobot robot) {
-		if(!this.isConnected()) {
+		if(!this.isConnected()) { // si può connettere solo ad un robot alla volta
 			this.robot = robot;
 		}
 	}
 	
 	public abstract double getEnergyConsumption();
-	
-	public double getEnergyLevel() {
-		return this.energyLevel;
-	}
 	
 	protected double finalOp(boolean executed) {
 		this.switchOff();
@@ -67,9 +58,11 @@ public abstract class AbstractComponent implements Component {
 		return 0;
 	}
 	
+	public abstract boolean executeAction();
+	
 	public String toString() {
 		return "[Component name=" + this.name + ", switchedOn=" + this.switchedOn + ", robot=" 
-				+ this.robot + ", energyLevel=" + this.energyLevel + "]";
+				+ this.robot + "]";
 	}
 
 }
