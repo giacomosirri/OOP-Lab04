@@ -17,5 +17,7 @@ public interface Component {
 	void setRobot(ExpandibleRobot robot);
 	
 	double getEnergyConsumption();
+	
+	boolean executeAction();
 
 }

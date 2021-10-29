@@ -53,5 +53,14 @@ public class Arm extends AbstractOperableComponent {
 		}
 		return false;
 	}
+	
+	public boolean executeAction() {
+		if(this.isGrabbing()) {
+			return this.drop();
+		}
+		else {
+			return this.pick();
+		}
+	}
 
 }
