@@ -51,7 +51,10 @@ public class ExpandibleRobot extends BaseRobot implements ExpandibleRobotInterfa
 	
 	public boolean executeAction(final Component component) {
 		if (this.isBatteryEnough(component.getEnergyConsumption()) && component.getRobot() == this) {
-			this.consumeBattery(component.executeAction());
+			double energyConsumption = component.executeAction();
+			if (!(component instanceof BordersNavigator)) { // viene già calcolata nella move
+				this.consumeBattery(energyConsumption);
+			}
 			return true;
 		}
 		return false;
