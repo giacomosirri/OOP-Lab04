@@ -12,6 +12,6 @@ public interface ExpandibleRobotInterface {
 	
 	void executeAction(Component component);
 	
-	public void executeAction(final OperableComponent component, final Command command);
+	void executeAction(final OperableComponent component, final Command command);
 
 }

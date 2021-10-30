@@ -18,6 +18,6 @@ public interface Component {
 	
 	double getEnergyConsumption();
 
-	boolean executeAction();
+	double executeAction();
 	
 }

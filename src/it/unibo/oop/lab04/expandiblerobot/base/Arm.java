@@ -44,23 +44,28 @@ public class Arm extends AbstractOperableComponent {
 		}
 	}
 	
-	public boolean executeAction(Command command) {
-		if (command.equals(new Command("pick", 1))) {
-			return this.pick();
+	public double executeAction(Command command) {
+		if(this.isConnected() && this.isSwitchedOn()) {
+			if (command.equals(new Command("pick", 1))) {
+				return this.finalOp(this.pick());
+			}
+			if (command.equals(new Command("drop", 2))) {
+				return this.finalOp(this.drop());
+			}
 		}
-		if (command.equals(new Command("drop", 2))) {
-			return this.drop();
-		}
-		return false;
+		return this.finalOp(false);
 	}
 	
-	public boolean executeAction() {
-		if(this.isGrabbing()) {
-			return this.drop();
+	public double executeAction() {
+		if(this.isConnected() && this.isSwitchedOn()) {
+			if(this.isGrabbing()) {
+				return this.finalOp(this.drop());
+			}
+			else {
+				return this.finalOp(this.pick());
+			}
 		}
-		else {
-			return this.pick();
-		}
+		return this.finalOp(false);
 	}
 
 }

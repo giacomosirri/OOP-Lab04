@@ -6,6 +6,6 @@ public interface OperableComponent extends Component {
 	
 	boolean removeCommand(Command command);
 	
-	boolean executeAction(Command command);
+	double executeAction(Command command);
 
 }

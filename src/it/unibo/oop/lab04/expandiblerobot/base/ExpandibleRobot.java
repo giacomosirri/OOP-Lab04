@@ -10,6 +10,9 @@ public class ExpandibleRobot extends BaseRobot implements ExpandibleRobotInterfa
 	public ExpandibleRobot(String robotName, Set<Component> comp) {
 		super(robotName);
 		this.components = comp;
+		for (final Component c: this.components) {
+			c.setRobot(this);
+		}
 	}
 
 	public ExpandibleRobot(String robotName) {
@@ -25,45 +28,38 @@ public class ExpandibleRobot extends BaseRobot implements ExpandibleRobotInterfa
 		return this.components;
 	}
 	
-	public void addComponent(Component c) {
-		this.components.add(c);
-		for (Component comp : this.components) {
-			comp.setRobot(this);
+	public void addComponent(Component component) {
+		this.components.add(component);
+		for (final Component c : this.components) {
+			c.setRobot(this);
 		}
 	}
 	
 	public void putAllInMotion() {
 		for (final Component c : components) {
-			if (c.isSwitchedOn() && this == c.getRobot()) {
-				this.executeAction(c);
-			}
+			this.executeAction(c);
 		}
 	}
 
-	private void finalOp(boolean b, Component component) {
-		if (b) {
-			this.consumeBattery(component.getEnergyConsumption());
-		}
-	}
-	
 	public void executeAction(final OperableComponent component, final Command command) {
 		if (this.isBatteryEnough(component.getEnergyConsumption()) && component.getRobot() == this) {
-			finalOp(component.executeAction(command), component);
+			this.consumeBattery(component.executeAction(command));
 		}
 	}
 	
 	public void executeAction(final Component component) {
 		if(this.isBatteryEnough(component.getEnergyConsumption()) && component.getRobot() == this) {
-			finalOp(component.executeAction(), component);
+			this.consumeBattery(component.executeAction());
 		}
 	}
 	
 	public String toString() {
-		String s = "Components: ";
-		for (Component c : components) {
-			s = s + c + ", ";
-		}
-		return s = s + " battery level: " + this.getBatteryLevel() + " position: " + 
+	/*	String s = "Components: ";
+		var iterator = this.components.iterator();
+		while(iterator.hasNext()) {
+			s = s + iterator.next();
+		}*/
+		return " battery level: " + this.getBatteryLevel() + " position: " + 
 				"(" + this.getPosition().getX() + "," + this.getPosition().getY() + ")";
 	}
 

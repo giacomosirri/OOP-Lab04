@@ -21,22 +21,38 @@ public class BordersNavigator extends AbstractComponent {
 		return BordersNavigator.ENERGY_CONSUMPTION;
 	}
 
-	protected void differentiateAction() {
-		Position2D p = this.getRobot().getField().getPosition();
-		while (this.isSwitchedOn()) {
-			if (this.checkDirection()) {
-				p = p.sumVector(direction);
-			}
-			else {
-				direction = setNewDirection();
-			}
+	public Position2D getDirection() {
+		var dir = new RobotPosition(this.direction.getX(), this.direction.getY());
+		return dir;
+	}
+	
+	private void convertDirectionIntoMovement() {
+		if (this.getDirection().equals(new RobotPosition(-1, 0))) {
+			this.getRobot().moveLeft();
+		} else if (this.getDirection().equals(new RobotPosition(1, 0))) {
+			this.getRobot().moveRight();
+		} else if (this.getDirection().equals(new RobotPosition(0, -1))) {
+			this.getRobot().moveDown();
+		} else {
+			this.getRobot().moveUp();
 		}
+	}
+	
+	public double executeAction() {
+		while (this.isConnected() /*&& this.isSwitchedOn()*/) {
+			if (!this.checkDirection()) {
+				this.setNewDirection();
+			}
+			this.convertDirectionIntoMovement();
+			return this.finalOp(true);
+		}
+		return this.finalOp(false);
 	}
 
 	private boolean checkDirection() {
 		var pos = new RobotPosition(0,0);
-		pos.sumVector(new RobotPosition(this.direction.getX() + this.getRobot().getField().getPosition().getX(),
-				this.direction.getY() + this.getRobot().getField().getPosition().getY()));
+		pos.sumVector(new RobotPosition(this.direction.getX() + this.getRobot().getPosition().getX(),
+				this.direction.getY() + this.getRobot().getPosition().getY()));
 		return this.isWithinWorld(pos);
 	}
 
@@ -47,7 +63,8 @@ public class BordersNavigator extends AbstractComponent {
         		y >= RobotEnvironment.Y_LOWER_LIMIT && y <= RobotEnvironment.Y_UPPER_LIMIT;
     }
     
-    private Position2D setNewDirection() {
-    	return new RobotPosition(0,1);
+    private void setNewDirection() {
+    	direction = new RobotPosition(this.getDirection().getY(), -this.getDirection().getX());
     }
+
 }

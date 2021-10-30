@@ -13,13 +13,13 @@ public class AtomicBattery extends AbstractComponent {
 		return AtomicBattery.ENERGY_CONSUMPTION;
 	}
 
-	public boolean executeAction() {
-		if (this.getRobot().getBatteryLevel() > 0.5) {
+	public double executeAction() {
+		if (this.isSwitchedOn() && this.isConnected() && this.getRobot().getBatteryLevel() > 0.5) {
 			this.getRobot().recharge();
-			return true;	
+			return this.finalOp(true);	
 		}
 		else {
-			return false;
+			return this.finalOp(false);
 		}
 	}
 

@@ -51,18 +51,17 @@ public abstract class AbstractComponent implements Component {
 	public abstract double getEnergyConsumption();
 	
 	protected double finalOp(boolean executed) {
-		this.switchOff();
-		if(executed) {
+		if (executed) {
 			return this.getEnergyConsumption();
 		}
 		return 0;
 	}
 	
-	public abstract boolean executeAction();
+	public abstract double executeAction();
 	
 	public String toString() {
-		return "[Component name=" + this.name + ", switchedOn=" + this.switchedOn + ", robot=" 
-				+ this.robot + "]";
+		return "[Component name=" + this.getName() + ", switchedOn=" + this.isSwitchedOn() + ", robot=" 
+				+ this.getRobot() + "]";
 	}
 
 }
