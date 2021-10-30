@@ -10,8 +10,8 @@ public interface ExpandibleRobotInterface {
 	
 	void putAllInMotion();
 	
-	void executeAction(Component component);
+	boolean executeAction(Component component);
 	
-	void executeAction(final OperableComponent component, final Command command);
+	boolean executeAction(final OperableComponent component, final Command command);
 
 }

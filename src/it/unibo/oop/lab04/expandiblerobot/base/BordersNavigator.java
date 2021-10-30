@@ -51,7 +51,7 @@ public class BordersNavigator extends AbstractComponent {
 
 	private boolean checkDirection() {
 		var pos = new RobotPosition(0,0);
-		pos.sumVector(new RobotPosition(this.direction.getX() + this.getRobot().getPosition().getX(),
+		pos = pos.sumVector(new RobotPosition(this.direction.getX() + this.getRobot().getPosition().getX(),
 				this.direction.getY() + this.getRobot().getPosition().getY()));
 		return this.isWithinWorld(pos);
 	}
