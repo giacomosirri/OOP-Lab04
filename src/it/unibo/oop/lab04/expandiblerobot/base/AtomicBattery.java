@@ -1,5 +1,7 @@
 package it.unibo.oop.lab04.expandiblerobot.base;
 
+import it.unibo.oop.lab04.expandiblerobot.components.AbstractComponent;
+
 public class AtomicBattery extends AbstractComponent {
 
 	private static final double ENERGY_CONSUMPTION = 18;

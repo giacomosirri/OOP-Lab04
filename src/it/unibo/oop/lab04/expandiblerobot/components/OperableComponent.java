@@ -1,4 +1,4 @@
-package it.unibo.oop.lab04.expandiblerobot.base;
+package it.unibo.oop.lab04.expandiblerobot.components;
 
 public interface OperableComponent extends Component {
 		

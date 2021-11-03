@@ -1,6 +1,10 @@
 package it.unibo.oop.lab04.expandiblerobot.base;
 
-import it.unibo.oop.lab04.robot.base.*;
+import it.unibo.oop.lab04.expandiblerobot.components.Command;
+import it.unibo.oop.lab04.expandiblerobot.components.Component;
+import it.unibo.oop.lab04.expandiblerobot.components.OperableComponent;
+import it.unibo.oop.lab04.robot.base.BaseRobot;
+
 import java.util.*;
 
 public class ExpandibleRobot extends BaseRobot implements ExpandibleRobotInterface{

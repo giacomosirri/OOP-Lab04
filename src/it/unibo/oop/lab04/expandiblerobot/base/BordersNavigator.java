@@ -1,5 +1,6 @@
 package it.unibo.oop.lab04.expandiblerobot.base;
 
+import it.unibo.oop.lab04.expandiblerobot.components.AbstractComponent;
 import it.unibo.oop.lab04.robot.base.*;
 
 public class BordersNavigator extends AbstractComponent {

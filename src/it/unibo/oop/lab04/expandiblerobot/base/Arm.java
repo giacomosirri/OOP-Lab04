@@ -1,6 +1,8 @@
 package it.unibo.oop.lab04.expandiblerobot.base;
 
 import java.util.Set;
+import it.unibo.oop.lab04.expandiblerobot.components.AbstractOperableComponent;
+import it.unibo.oop.lab04.expandiblerobot.components.Command;
 
 public class Arm extends AbstractOperableComponent {
 	

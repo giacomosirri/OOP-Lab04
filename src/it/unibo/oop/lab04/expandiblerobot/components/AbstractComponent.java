@@ -1,4 +1,6 @@
-package it.unibo.oop.lab04.expandiblerobot.base;
+package it.unibo.oop.lab04.expandiblerobot.components;
+
+import it.unibo.oop.lab04.expandiblerobot.base.ExpandibleRobot;
 
 public abstract class AbstractComponent implements Component {
 	
