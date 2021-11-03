@@ -11,9 +11,9 @@ public class ExpandibleRobot extends BaseRobot implements ExpandibleRobotInterfa
 	
 	private final Set<Component> components;
 
-	public ExpandibleRobot(String robotName, Set<Component> comp) {
+	public ExpandibleRobot(String robotName, Set<Component> components) {
 		super(robotName);
-		this.components = comp;
+		this.components = components;
 		for (final Component c: this.components) {
 			c.setRobot(this);
 		}

@@ -12,19 +12,13 @@ public class BordersNavigator extends AbstractComponent {
 	public BordersNavigator(String name) {
 		super(name);
 	}
-
-	public void switchOn() {
-		if (this.isConnected()) {
-			super.switchOn();
-		}
-	}
+	
 	public double getEnergyConsumption() {	
 		return BordersNavigator.ENERGY_CONSUMPTION;
 	}
 
-	public Position2D getDirection() {
-		var dir = new RobotPosition(this.direction.getX(), this.direction.getY());
-		return dir;
+	private Position2D getDirection() {
+		return new RobotPosition(this.direction.getX(), this.direction.getY());
 	}
 	
 	private void convertDirectionIntoMovement() {
